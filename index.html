@@ -4,272 +4,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BroadMind | Student Inquiry</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Meta Ads | Mock Lead Trigger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #3b82f6;
-            --primary-hover: #2563eb;
-            --bg: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
         body {
-            background-color: var(--bg);
-            background-image:
-                radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
-            color: var(--text-main);
+            background-color: #1877F2;
+            /* Meta Blue */
+            color: white;
+            font-family: 'Inter', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
         }
 
         .container {
-            width: 100%;
-            max-width: 450px;
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.1);
             padding: 40px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 400px;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 32px;
+        h1 {
+            font-weight: 900;
+            margin-bottom: 10px;
         }
 
-        .logo {
-            font-weight: 800;
-            font-size: 24px;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
-            background: linear-gradient(to right, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .header h1 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .header p {
-            color: var(--text-muted);
+        p {
             font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 30px;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
         }
 
         label {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-            padding-left: 4px;
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            opacity: 0.9;
         }
 
-        input,
-        select {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: white;
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: white;
+            color: #1c1e21;
             font-size: 15px;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-
-        input:focus,
-        select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
         }
 
         button {
-            background: var(--primary);
-            color: white;
+            background: white;
+            color: #1877F2;
             border: none;
-            border-radius: 12px;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 800;
             cursor: pointer;
-            transition: all 0.2s ease;
-            margin-top: 10px;
+            width: 100%;
+            transition: transform 0.2s;
         }
 
         button:hover {
-            background: var(--primary-hover);
-            transform: translateY(-1px);
-        }
-
-        button:active {
-            transform: translateY(0);
+            transform: scale(1.02);
         }
 
         .status {
             margin-top: 20px;
-            text-align: center;
-            font-size: 14px;
-            padding: 12px;
-            border-radius: 12px;
-            display: none;
-        }
-
-        .status.success {
-            display: block;
-            background: rgba(16, 185, 129, 0.1);
-            color: #34d399;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .status.error {
-            display: block;
-            background: rgba(239, 68, 68, 0.1);
-            color: #f87171;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        /* Loading Spinner */
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, .3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .hidden {
-            display: none;
+            font-size: 13px;
+            font-weight: 600;
         }
     </style>
 </head>
 
 <body>
-
     <div class="container">
-        <div class="header">
-            <div class="logo">BROADMIND</div>
-            <h1>Study Abroad Inquiry</h1>
-            <p>Fill in your details and get a callback from our AI advisor within 30 seconds.</p>
+        <h1>Meta Lead Ad</h1>
+        <p>Simulation for BroadMind Demo</p>
+
+        <div class="input-group">
+            <label>Student Name</label>
+            <input type="text" id="name" value="Krishna (Demo Lead)">
         </div>
 
-        <form id="inquiryForm">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="John Doe" required>
-            </div>
+        <div class="input-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="+91 XXXX XXXX">
+        </div>
 
-            <div class="form-group">
-                <label for="phone">Phone Number (with Country Code)</label>
-                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
-            </div>
-
-            <div class="form-group">
-                <label for="country">Target Country</label>
-                <select id="country" name="country" required>
-                    <option value="" disabled selected>Select a country</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="USA">USA</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Germany">Germany</option>
-                </select>
-            </div>
-
-            <button type="submit" id="submitBtn">
-                <span id="btnText">Get Instant Callback</span>
-                <span id="btnLoading" class="hidden"><span class="spinner"></span>Processing...</span>
-            </button>
-        </form>
-
-        <div id="statusMsg" class="status"></div>
+        <button id="triggerBtn">🚀 Trigger Meta Ad Lead</button>
+        <div id="status" class="status"></div>
     </div>
 
     <script>
-        const form = document.getElementById('inquiryForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const btnLoading = document.getElementById('btnLoading');
-        const statusMsg = document.getElementById('statusMsg');
+        // REPLACE THIS with your n8n /meta-simulation webhook URL
+        const MOCK_WEBHOOK_URL = 'YOUR_N8N_META_SIMULATION_URL_HERE';
 
-        // REPLACE THIS URL with your n8n Webhook URL later
-        const N8N_WEBHOOK_URL = 'YOUR_N8N_WEBHOOK_URL_HERE';
+        document.getElementById('triggerBtn').addEventListener('click', async () => {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const status = document.getElementById('status');
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+            if (!phone) { alert('Please enter a phone number!'); return; }
 
-            // UI State: Loading
-            submitBtn.disabled = true;
-            btnText.classList.add('hidden');
-            btnLoading.classList.remove('hidden');
-            statusMsg.className = 'status';
-            statusMsg.style.display = 'none';
-
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-            data.source = 'Website Form'; // Track source
+            status.innerText = 'Sending Lead to n8n...';
 
             try {
-                const response = await fetch(N8N_WEBHOOK_URL, {
+                const response = await fetch(MOCK_WEBHOOK_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, phone, source: 'Meta Ads' })
                 });
 
                 if (response.ok) {
-                    statusMsg.textContent = 'Success! Expect a call within 30 seconds.';
-                    statusMsg.classList.add('success');
-                    form.reset();
+                    status.innerText = '✅ Lead Fired! Wait for the call...';
                 } else {
-                    throw new Error('Failed to submit form');
+                    status.innerText = '❌ Error: check n8n URL';
                 }
-            } catch (error) {
-                statusMsg.textContent = 'Something went wrong. Please try again.';
-                statusMsg.classList.add('error');
-            } finally {
-                submitBtn.disabled = false;
-                btnText.classList.remove('hidden');
-                btnLoading.classList.add('hidden');
+            } catch (e) {
+                status.innerText = '❌ Failed to connect to n8n';
             }
         });
     </script>
